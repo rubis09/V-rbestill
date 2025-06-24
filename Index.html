@@ -42,7 +42,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bestill Vær</h1>
+    <h1> Bestill Vær</h1>
     <p>Fyll inn informasjon for å bestille.</p>
 
     <form id="weatherForm">
@@ -79,15 +79,15 @@
 
       const receipt = `
         =============================<br>
-        ✨  VÆRBESTILL.NO  ✨<br>
+        ✨  KVITERING: Værbestill.no  ✨<br>
         =============================<br>
         Sted: ${location}<br>
         Dato: ${date}<br>
         Tid: ${start} - ${end}<br>
         Bestilt vær: ${weather}<br>
-        Pris: 0 kr <br>
-        Ordrenummer: -${Math.floor(Math.random() * 90000 + 10000)}<br>
-        Takk for at du bestiller fra VærBestill AS!<br>
+        Pris: 0 kr (vær ikke inkludert 😄)<br>
+        Ordrenummer:-${Math.floor(Math.random() * 90000 + 10000)}<br>
+        Takk for at du bestiller fra Værbestill AS!<br>
         =============================<br>
       `;
 

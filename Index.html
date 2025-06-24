@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bestill Vær (på tull)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-weight: bold;
+    }
+    .receipt {
+      background: #eee;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: left;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bestill Vær</h1>
+    <p>Fyll inn informasjon for å bestille.</p>
+
+    <form id="weatherForm">
+      <input type="text" id="location" placeholder="Sted (f.eks. Oslo)" required>
+      <input type="date" id="date" required>
+      <input type="time" id="startTime" required>
+      <input type="time" id="endTime" required>
+      <select id="weatherType" required>
+        <option value="">Velg værtype</option>
+        <option>Sol</option>
+        <option>Regn</option>
+        <option>Snø</option>
+        <option>Torden</option>
+        <option>Skyet</option>
+        <option>Storm</option>
+        <option>Hagl</option>
+        <option>Magisk tåke</option>
+      </select>
+      <button type="submit">Generer kvittering</button>
+    </form>
+
+    <div id="receipt" class="receipt" style="display: none;"></div>
+  </div>
+
+  <script>
+    document.getElementById('weatherForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const location = document.getElementById('location').value;
+      const date = document.getElementById('date').value;
+      const start = document.getElementById('startTime').value;
+      const end = document.getElementById('endTime').value;
+      const weather = document.getElementById('weatherType').value;
+
+      const receipt = `
+        =============================<br>
+        ✨  VÆRBESTILL.NO  ✨<br>
+        =============================<br>
+        Sted: ${location}<br>
+        Dato: ${date}<br>
+        Tid: ${start} - ${end}<br>
+        Bestilt vær: ${weather}<br>
+        Pris: 0 kr <br>
+        Ordrenummer: -${Math.floor(Math.random() * 90000 + 10000)}<br>
+        Takk for at du bestiller fra VærBestill AS!<br>
+        =============================<br>
+      `;
+
+      const receiptEl = document.getElementById('receipt');
+      receiptEl.innerHTML = receipt;
+      receiptEl.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
